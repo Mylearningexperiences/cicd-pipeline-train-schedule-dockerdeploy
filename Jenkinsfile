@@ -16,8 +16,11 @@ pipeline {
             steps {
                 script {
                     app = docker.build("sindhudockerhub/train-schedule")
+                    echo 'build completed'
                     app.inside {
+                        echo 'inside start'
                         sh 'echo $(curl localhost:8080)'
+                        echo 'inside end'
                     }
                 }
             }
